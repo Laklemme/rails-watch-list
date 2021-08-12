@@ -1,0 +1,6 @@
+<h1><%= @movie.title %></h1>
+
+<p>Rating:<%= @movie.rating %></p>
+<p><%= @movie.overview %></p>
+<p><%= @movie.poster_url %></p>
+<%= image_tag @movie.poster_url, alt: "#{@movie.title}", width: 200 %>
