@@ -1,12 +1,19 @@
-<h1><%= @list.name %></h1>
+<%= link_to '< All lists', lists_path %>
 
-<%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+<h1><%= @list.name %></h1>
+<% if @list.photo.attached? %>
+<%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 
 <h3>Bookmarks</h3>
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
-  <li><%= bookmark.movie.title %><br>
-  <%= bookmark.comment %><br>
+    <li><%= bookmark.movie.title %><br>
+    <%= bookmark.comment %><br>
+    <p>Rating:<%= bookmark.movie.rating %></p>
+    <p><%= bookmark.movie.overview %></p>
+      <%= image_tag bookmark.movie.poster_url, alt: "#{bookmark.movie.title}", width: 200 %>
+    <br>
    <%= link_to "Remove",
                   bookmark_path(bookmark),
                   method: :delete,

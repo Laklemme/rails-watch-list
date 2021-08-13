@@ -2,7 +2,9 @@
 <ul>
   <% @lists.each do |list| %>
     <%= link_to list.name, list_path(list) %>
-    <%= cl_image_tag @article.photo.key, height: 80, width: 100, crop: :fill %>
+    <% if list.photo.attached? %>
+    <%= cl_image_tag list.photo.key, height: 80, width: 100, crop: :fill %>
+    <% end %>
   <% end %>
 </ul>
 
