@@ -2,6 +2,7 @@
 <ul>
   <% @lists.each do |list| %>
     <%= link_to list.name, list_path(list) %>
+    <%= cl_image_tag @article.photo.key, height: 80, width: 100, crop: :fill %>
   <% end %>
 </ul>
 
